@@ -54,12 +54,7 @@ class AuthController extends CI_Controller
 
     public function cerrar_sesion()
     {
-        $usuario_data = array(
-            'logueado' => FALSE
-        );
-        $this->session->set_userdata($usuario_data);
-        // destroy session
         $this->session->sess_destroy();
-        redirect('App/login');
+        redirect('AuthController/login');
     }
 }

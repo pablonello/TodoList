@@ -81,6 +81,6 @@ class UsuarioController extends CI_Controller
         }
 
         // Redirigir a alguna vista
-        redirect(base_url('usuarioController/index'));
+        redirect('usuarioController/index');
     }
 }
