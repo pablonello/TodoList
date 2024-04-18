@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 Full Example</title>
+    <title>Challenge ToDoList</title>
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/adminlte.min.css'); ?>">
     <link rel="stylesheet"  href="<?php echo base_url('assets/css/all.min.css'); ?>">

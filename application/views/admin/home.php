@@ -20,16 +20,73 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         {title}
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <h3><?php echo $cantidades->cantPendiente->totalPendiente ?></h3>
+
+                                        <p>Pendientes</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h3><?php echo $cantidades->cantTest->totalTest ?></h3>
+                                        <p>Desarrollo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-pie-graph"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h3><?php echo $cantidades->cantDesarrollo->totalDesarrollo ?></h3>
+                                        <p>Test</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-edit"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-xs-6">
+                                <!-- small box -->
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3><?php echo $cantidades->cantCompletada->totalCompletada ?></h3>
+                                        <p>Completada</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-stalker"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Main content -->
-        <section class="content">
-            <!-- Your content goes here -->
-        </section>
-        <!-- /.content -->
+    </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Your content goes here -->
+    </section>
+    <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 

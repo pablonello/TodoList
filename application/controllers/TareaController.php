@@ -15,9 +15,7 @@ class TareaController extends CI_Controller
     public function index()
     {
         if (!empty($this->session->userdata('usuarioNombre'))) {
-
             $this->load->model('Tarea');
-
             $listTareas = $this->Tarea->obtenerTareas();
             $view["title"] = "Lista de Tareas";
             $data['scripts'] = '<script src="' . base_url('assets/js/tareas.js') . '"></script>';
@@ -42,9 +40,7 @@ class TareaController extends CI_Controller
     {
         // Obtener los datos del formulario
         $tarea = $this->input->post();
-
         if (!empty($tarea)) {
-
             $save = array(
                 'titulo' => $tarea['titulo'],
                 'descripcion' => $tarea['descripcion'],
@@ -53,10 +49,8 @@ class TareaController extends CI_Controller
                 'estado' => $tarea['estado'],
                 'usuarioId' => $tarea['usuarioId']
             );
-
             $this->load->model('Tarea');
             $idtarea = $this->Tarea->insert($save);
-
             if ($idtarea > 0) {
                 $response = array(
                     'success' => true,

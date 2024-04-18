@@ -4,12 +4,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class UsuarioController extends CI_Controller
 {
+    /*
+    Cargo todos los datos para la poder trabajar en la vista del usuario.
+    A su vez cargo los escript que voy a utilizar, para no cargar todos los script siempre
+    en este caso cargo el scripto de ususario el cual se encuantre en la carperta 
+    assetes/js/usuario.js este contiene todos las acciones jquery que se ocupan en la vista.
+    Hago esta division para poder tener mas controlado el codigo dividido por secciones, y 
+    poder llevar un mejor organizacion y legibilidad.
+    */
     public function index()
     {
         if (!empty($this->session->userdata('usuarioNombre'))) {
-
             $this->load->model('Usuario');
-
             $listUsuarios = $this->Usuario->obtenerUsuarios();
             $view["title"] = "Lista de usuarios";
             $data['scripts'] = '<script src="' . base_url('assets/js/usuario.js') . '"></script>';
@@ -29,14 +35,16 @@ class UsuarioController extends CI_Controller
         }
     }
 
-
+/*
+Realizo la carga de usuarios en la base de datos
+si el proceso puede cargar un usuario en la base de datos
+entonces me devuelve su id o registros, y yo respondo a la vista que esta esperando mi respues 
+que todo anduvo correcto
+*/
     public function guardarUsuario()
     {
-        // Obtener los datos del formulario
         $usuario = $this->input->post();
-
         if (!empty($usuario)) {
-
             $this->load->model('Usuario');
             $pswEncriptado = $this->Usuario->encryption($usuario['usuarioPassword']);
             $save = array(
@@ -44,9 +52,7 @@ class UsuarioController extends CI_Controller
                 'usuarioPassword' => $pswEncriptado,
                 'email' => $usuario['email'],
             );
-
             $idtarea = $this->Usuario->insert($save);
-
             if ($idtarea > 0) {
                 $response = array(
                     'success' => true,
@@ -67,20 +73,17 @@ class UsuarioController extends CI_Controller
         }
     }
 
+    /*Realizo la eliminacion de un susario de la base de datos
+    */
     public function eliminarUsuario($id)
     {
         $this->load->model('Usuario');
-
         $eliminacionExitosa = $this->Usuario->eliminar($id);
-
-        
         if ($eliminacionExitosa) {
             $this->session->set_flashdata('mensaje', 'Se elimino el usuario correctamente.');
         } else {
             $this->session->set_flashdata('mensaje', 'Error, no se elimino el usuario correctamente.');
         }
-
-        // Redirigir a alguna vista
-        redirect(base_url('usuarioController/index'));
+        redirect('usuarioController/index');
     }
 }
