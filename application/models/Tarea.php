@@ -49,4 +49,42 @@ class Tarea extends CI_Model
         }
         return true;
     }
+
+    public function getCantidades()
+    {
+        $this->db->select('COUNT(*) as totalPendiente');
+        $this->db->from('Tarea');
+        $this->db->where('estado', 'pendiente');
+        $consulta = $this->db->get();
+
+        $cantPendiente  = $consulta->row();
+
+        $this->db->select('COUNT(*) as totalTest');
+        $this->db->from('Tarea');
+        $this->db->where('estado', 'test');
+        $consulta = $this->db->get();
+
+        $cantTest  = $consulta->row();
+
+        $this->db->select('COUNT(*) as totalDesarrollo');
+        $this->db->from('Tarea');
+        $this->db->where('estado', 'desarrollo');
+        $consulta = $this->db->get();
+
+        $cantDesarrollo  = $consulta->row();
+
+        $this->db->select('COUNT(*) as totalCompletada');
+        $this->db->from('Tarea');
+        $this->db->where('estado', 'completada');
+        $consulta = $this->db->get();
+
+        $cantCompletada  = $consulta->row();
+     
+        return (object) array(
+            "cantPendiente" => $cantPendiente,
+            "cantDesarrollo" => $cantDesarrollo,
+            "cantTest" => $cantTest,
+            "cantCompletada" => $cantCompletada
+        );
+    }
 }
