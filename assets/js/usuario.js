@@ -1,15 +1,9 @@
-// Script para enviar el formulario por AJAX
 $(document).ready(function () {
     $('#tareaFormulario').submit(function (e) {
-        e.preventDefault(); // Evita que el formulario se envíe normalmente
-
-        // Obtén los datos del formulario
+        e.preventDefault();
         var formData = $(this).serialize();
-
-        // Envía los datos por AJAX
         $.ajax({
-            url: base_url + "usuarioController/guardarUsuario", // Cambia 'ruta/hacia/la/funcion/guardar_tarea' por la ruta real de tu función en el controlador
-            type: 'POST',
+            url: base_url + "usuarioController/guardarUsuario",
             data: formData,
             dataType: 'json',
             success: function (response) {
@@ -29,6 +23,5 @@ $(document).ready(function () {
             }
         });
     });
-
 });
 

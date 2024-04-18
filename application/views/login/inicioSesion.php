@@ -44,8 +44,7 @@
 </style>
 <br><br><br><br><br><br><br>
 
-<body >
-
+<body>
     <div class="login-box">
         <div class="card">
             <div class="card-body login-card-body">
@@ -77,11 +76,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <!-- Aquí puedes agregar opciones de "Recordar contraseña" o similares -->
-                            </div>
-                        </div>
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                         </div>
@@ -91,13 +85,9 @@
         </div>
     </div>
 
-    <!-- jQuery -->
     <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
-    <!-- agregar script necesarios -->
     <?php if (isset($scripts)) echo $scripts; ?>
-    <!-- Bootstrap 4 -->
     <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
-    <!-- AdminLTE App -->
     <script src="<?php echo base_url('assets/js/adminlte.min.js'); ?>"></script>
 </body>
 
