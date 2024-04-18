@@ -4,14 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class UsuarioController extends CI_Controller
 {
-    /*
-    Cargo todos los datos para la poder trabajar en la vista del usuario.
-    A su vez cargo los escript que voy a utilizar, para no cargar todos los script siempre
-    en este caso cargo el scripto de ususario el cual se encuantre en la carperta 
-    assetes/js/usuario.js este contiene todos las acciones jquery que se ocupan en la vista.
-    Hago esta division para poder tener mas controlado el codigo dividido por secciones, y 
-    poder llevar un mejor organizacion y legibilidad.
-    */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function index()
     {
         if (!empty($this->session->userdata('usuarioNombre'))) {
@@ -35,7 +32,7 @@ class UsuarioController extends CI_Controller
         }
     }
 
-/*
+    /*
 Realizo la carga de usuarios en la base de datos
 si el proceso puede cargar un usuario en la base de datos
 entonces me devuelve su id o registros, y yo respondo a la vista que esta esperando mi respues 

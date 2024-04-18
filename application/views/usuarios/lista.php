@@ -4,14 +4,11 @@ if ($this->session->flashdata('mensaje')) { ?>
         alert("<?php echo $this->session->flashdata('mensaje'); ?>");
     </script>
 <?php } ?>
-
 <div style="display: flex; justify-content: space-between; align-items: center; margin: 10px 0;">
     <a class="btn btn-primary" data-toggle="modal" data-target="#agregarUsuario" href="#">
         <i class="fa-regular fa-floppy-disk"></i></i> Agregar Usuario
     </a>
-
 </div>
-
 <?php if ($listUsuarios == NULL) {
     echo 'No hay usuarios cargados';
 } else {
@@ -21,7 +18,7 @@ if ($this->session->flashdata('mensaje')) { ?>
             <tr>
                 <th style="width: 10px">#</th>
                 <th>Usario</th>
-                <th>Passrowd</th>
+                <th>Email</th>
                 <th>acciones</th>
             </tr>
         </thead>
@@ -30,8 +27,7 @@ if ($this->session->flashdata('mensaje')) { ?>
                 <tr>
                     <td><?php echo $usuario->id ?></td>
                     <td><?php echo $usuario->usuarioNombre ?></td>
-                    <td><?php echo $usuario->usuarioPassword ?></td>
-
+                    <td><?php echo $usuario->email ?></td>
                     <td>
                         <div class="btn-group" style="display: flex;">
                             <a class="btn btn-sm btn-danger" href="<?php echo base_url() . 'usuarioController/eliminarUsuario/' . $usuario->id ?>">
@@ -39,15 +35,11 @@ if ($this->session->flashdata('mensaje')) { ?>
                             </a>
                         </div>
                     </td>
-
                 </tr>
             <?php endforeach; ?>
-
         </tbody>
     </table>
-
 <?php } ?>
-
 
 <div class="modal fade" id="agregarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -118,13 +110,11 @@ if ($this->session->flashdata('mensaje')) { ?>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // Pasar la URL base desde PHP a JavaScript
     const base_url = "<?php echo base_url(); ?>";
 </script>

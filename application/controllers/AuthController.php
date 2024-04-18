@@ -13,12 +13,6 @@ class AuthController extends CI_Controller
         $this->load->view('login/inicioSesion', null);
     }
 
-    /*
-    **
-    Realizo la validacion de ususario para lo cual capturo el usuario de la vista y los busco 
-    en mi base de datos, si existe dicho usuario permito el ingreso al sistema, y lo cargo en sesion,
-    encripto la contraseña que ingrese el usuario para que coincida con la de la base de datos
-    */
     public function validarUsuario()
     {
         if ($this->input->post()) {
@@ -46,10 +40,6 @@ class AuthController extends CI_Controller
         }
     }
 
-    /*
-    Metodo para cerrar session una vez que el ususario quiera irse, todos los controladores
-    controlan que se encuentre una sesion iniciada, para una mayor seguridad
-    */
     public function cerrar_sesion()
     {
         $this->session->sess_destroy();

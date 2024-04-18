@@ -30,7 +30,6 @@ class Usuario extends CI_Model
         $this->db->where('usuarioNombre', $username);
         $this->db->where('usuarioPassword', $pswencri);
         $consulta = $this->db->get();
-
         $resultado = $consulta->row();
 
         return $resultado;
@@ -43,7 +42,6 @@ class Usuario extends CI_Model
         $this->db->from('Usuario');
         $this->db->where('id ', $usuarioId);
         $consulta = $this->db->get();
-
         $resultado = $consulta->row();
 
         return $resultado;
@@ -51,32 +49,25 @@ class Usuario extends CI_Model
 
     public function obtenerUsuarios()
     {
-        // Ejecutar la consulta para obtener todos los usuarios
         $query = $this->db->get('Usuario');
-
-        // Verificar si hay resultados
         if ($query->num_rows() > 0) {
-            // Retornar los resultados como un arreglo de objetos
             return $query->result();
         } else {
-            // Si no hay resultados, retornar un arreglo vacío
             return array();
         }
     }
 
-    // Método para insertar un producto
     public function insert($datos)
     {
         $this->db->insert('Usuario', $datos);
-        return $this->db->insert_id(); // Devuelve el ID del producto insertado
+        return $this->db->insert_id();
     }
 
-    // Método para insertar un producto
     public function eliminar($id)
     {
         $this->db->where_in('id', $id);
         if (!$this->db->delete('Usuario')) {
-            return false; // Si hay un error, devuelve false
+            return false;
         }
         return true;
     }

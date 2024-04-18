@@ -1,44 +1,38 @@
-// Script para enviar el formulario por AJAX
 $(document).ready(function () {
     $('#tareaFormulario').submit(function (e) {
-        e.preventDefault(); // Evita que el formulario se envíe normalmente
-
-        // Obtén los datos del formulario
+        e.preventDefault();
         var formData = $(this).serialize();
-
-        // Envía los datos por AJAX
         $.ajax({
-            url: base_url + "tareaController/guardarTarea", // Cambia 'ruta/hacia/la/funcion/guardar_tarea' por la ruta real de tu función en el controlador
+            url: base_url + "tareaController/guardarTarea",
             type: 'POST',
             data: formData,
             dataType: 'json',
             success: function (response) {
-                // Maneja la respuesta del servidor
                 if (response.success) {
-                    alert(response.message); // Muestra un mensaje de éxito
-                    $('#agregarTarea').modal('hide'); // Cierra el modal
+                    alert(response.message);
+                    $('#agregarTarea').modal('hide');
                     console.log('recarga');
                     window.location.reload();
                 } else {
-                    alert('Error al guardar la tarea. Por favor, inténtalo de nuevo.'); // Muestra un mensaje de error
+                    alert('Error al guardar la tarea. Por favor, inténtalo de nuevo.');
                 }
             },
             error: function (xhr, status, error) {
-                console.error(xhr.responseText); // Muestra el error en la consola del navegador
-                alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.'); // Muestra un mensaje de error
+                console.error(xhr.responseText);
+                alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.');
             }
         });
     });
 
     $('#tablaTareas tbody tr').each(function () {
-        var fechaFinStr = $(this).find('td:eq(5)').text(); // Obtiene el texto de la sexta celda (índice 5)
+        var fechaFinStr = $(this).find('td:eq(5)').text();
         if (fechaFinStr !== "-") {
             var fechaFin = new Date(fechaFinStr);
             var today = new Date();
             var difference = fechaFin.getTime() - today.getTime();
             var daysDifference = Math.ceil(difference / (1000 * 3600 * 24));
             console.log(daysDifference);
-            var threshold = 3; // Umbral de días
+            var threshold = 3;
             if (daysDifference <= threshold && daysDifference >= 0) {
                 alert("La fecha de finalización de una tarea se acerca: " + fechaFinStr);
             }
@@ -46,7 +40,6 @@ $(document).ready(function () {
     });
 
     document.getElementById("checkAll").addEventListener("change", function () {
-
         var checkboxes = document.querySelectorAll("#tablaTareas tbody input[type='checkbox']");
         checkboxes.forEach(function (checkbox) {
             checkbox.checked = this.checked;
@@ -62,7 +55,6 @@ $(document).ready(function () {
                 checkboxes.forEach(function (checkbox) {
                     ids.push(checkbox.value);
                 });
-                // Envía los datos por AJAX
                 $.ajax({
                     url: base_url + "tareaController/eliminarTarea",
                     type: 'POST',
@@ -87,7 +79,6 @@ $(document).ready(function () {
         }
     });
 
-
     document.getElementById("completarSeleccionados").addEventListener("click", function () {
         var checkboxes = document.querySelectorAll("#tablaTareas tbody input[type='checkbox']:checked");
         if (checkboxes.length > 0) {
@@ -97,7 +88,6 @@ $(document).ready(function () {
                 checkboxes.forEach(function (checkbox) {
                     ids.push(checkbox.value);
                 });
-                // Envía los datos por AJAX
                 $.ajax({
                     url: base_url + "tareaController/completarTarea",
                     type: 'POST',
@@ -121,8 +111,5 @@ $(document).ready(function () {
             alert("Selecciona al menos una tarea para completar su proceso.");
         }
     });
-
-
-
 });
 
