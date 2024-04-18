@@ -44,58 +44,25 @@
                     <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                     <li class="nav-item">
                         <a href="<?php echo base_url() ?>homeController" class="nav-link">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="fa-solid fa-house-chimney"></i>
                             <p>
                                 Home
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Usuarios
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>usuarioController" class="nav-link">
+                            <i class="fa-regular fa-user"></i>
+                            <p>Usuarios</p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?php echo base_url(); ?>usuarioController" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Lista de usuarios</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar un usuario</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Tareas
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>tareaController" class="nav-link">
+                            <i class="fa-solid fa-list-check"></i>
+                            <p>Tareas</p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?php echo base_url(); ?>tareaController" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Lista de tareas</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Agregar una tarea</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

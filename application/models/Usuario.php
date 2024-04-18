@@ -7,9 +7,10 @@ define('SECRET_KEY', '$pablonellohotmail.com');
 define('SECRET_IV', '101712');
 class Usuario extends CI_Model
 {
-    public $table = "Usuario";
-    public $table_id = "id";
-
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public static function encryption($string)
     {
@@ -35,6 +36,19 @@ class Usuario extends CI_Model
         return $resultado;
     }
 
+    public function buscarPorId($usuarioId)
+    {
+
+        $this->db->select('usuarioNombre');
+        $this->db->from('Usuario');
+        $this->db->where('id ', $usuarioId);
+        $consulta = $this->db->get();
+
+        $resultado = $consulta->row();
+
+        return $resultado;
+    }
+
     public function obtenerUsuarios()
     {
         // Ejecutar la consulta para obtener todos los usuarios
@@ -48,5 +62,22 @@ class Usuario extends CI_Model
             // Si no hay resultados, retornar un arreglo vacío
             return array();
         }
+    }
+
+    // Método para insertar un producto
+    public function insert($datos)
+    {
+        $this->db->insert('Usuario', $datos);
+        return $this->db->insert_id(); // Devuelve el ID del producto insertado
+    }
+
+    // Método para insertar un producto
+    public function eliminar($id)
+    {
+        $this->db->where_in('id', $id);
+        if (!$this->db->delete('Usuario')) {
+            return false; // Si hay un error, devuelve false
+        }
+        return true;
     }
 }
